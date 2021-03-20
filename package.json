@@ -1,0 +1,23 @@
+{
+  "name": "food-ordering",
+  "version": "1.0.0",
+  "description": "food-ordering backend",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/innext/foodOrdering.git"
+  },
+  "keywords": [
+    "food-order",
+    "nodejs-food-ordering"
+  ],
+  "author": "innext",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/innext/foodOrdering/issues"
+  },
+  "homepage": "https://github.com/innext/foodOrdering#readme"
+}
