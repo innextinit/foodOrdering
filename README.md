@@ -9,6 +9,9 @@ post user login
 post user edit users profile
 delete user delete user
 get user get user profile
+put user update users password
+post user request password rest
+post user reset password
 
 post user add to cart
 get user get all cart item
