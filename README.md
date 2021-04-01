@@ -9,16 +9,18 @@ post user login
 post user edit users profile
 delete user delete user
 get user get user profile
-put user update users password
-post user request password rest
+post user update users password
+get user request password reset  
 post user reset password
 
 post user add to cart
 get user get all cart item
 put user edit cart
 post user remove from cart
-post user add new order
-get user get all order
+
+get user get cart item to checkout
+get user get all order histroy
+
 
 get food get all foods
 get food get details by id

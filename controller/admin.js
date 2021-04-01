@@ -54,7 +54,7 @@ class controller {
   static async deleteFood(req, res, next) {
     try {
       let {foodId} = req.params
-      let foundFood = await Food.findById(food)
+      let foundFood = await Food.findById(foodId)
       if (!foundFood) {
         const err = new Error()
         err.name = "Not Found"
@@ -69,4 +69,30 @@ class controller {
       next(error)
     }
   }
+
+  static async makeAdmin(req, res, next) {
+    try {
+     if(req.user.role !== "admin") {
+        throw new Error("sorry, you cant access this function")
+      }
+      if(req.user.role === "admin") {
+        const toBeAdmin = req.body.userToBeAdmin
+        await User.findByIdAndUpdate(
+          toBeAdmin,
+          {
+            role: "admin"
+          },
+          {
+            upsert: true
+          }
+        )
+        res.status(201)
+       }
+    } catch(error) {
+      next(error)
+    }
+  }
 }
+
+
+module.exports = controller

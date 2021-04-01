@@ -3,17 +3,27 @@ const Schema = mongoose.Schema
 
 const orderSchema = new Schema(
     {
-        orderID: {
+        orderId: {
             type: String,
             required: true,
         },
 
         items: [
             {
-            type: Schema.Types.ObjectId,
-            ref: "Food",
+            type: String,
+            required: true,
             },
         ],
+
+        address: {
+            type: String,
+            required: true,
+        },
+
+        phone: {
+            type: String,
+            required: true
+        },
         
         totalAmount: {
             type: Number,

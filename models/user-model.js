@@ -55,29 +55,29 @@ const userSchema = new Schema(
         cart: [
             {
             food: {
-                type: Schema.Types.ObjectId,
-                ref: "Food",
-                required: true 
+                    type: Schema.Types.ObjectId,
+                    ref: "Food",
+                    required: true,
                 },
             qty: {
-                type: Number, 
-                required: true
-                },
-            },
+                   type: Number,
+                   require: true
+                }               
+            }
         ],
 
         order: [
             {
-            type: Schema.Types.ObjectId,
-            ref: "Order"
+                type: Schema.Types.ObjectId,
+                ref: "Order"
             },
         ],
         
         role: {
-        type: String,
-        trim: true,
-        enum: ["user", "admin"],
-        default: "user"
+             type: String,
+             trim: true,
+             enum: ["user", "admin"],
+             default: "user"
         }
     },
     
