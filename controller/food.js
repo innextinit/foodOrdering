@@ -1,9 +1,9 @@
-const Food = require("../models/food")
+const Food = require("../models/food-model")
 
 class foodController{
-  static async allFood(req, res, next) {
+  static async allFoods(req, res, next) {
     try {
-      const allFoods = await Food.find()
+      const allFoods = await Food.find({available: true})
       return res.status(200).json(allFoods)
     } catch (error) {
       next(error)

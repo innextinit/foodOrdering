@@ -1,4 +1,5 @@
 const Food = require("../models/food-model")
+const User = require("../models/user-model")
 
 class controller {
   static async newFood(req, res, next) {
@@ -23,18 +24,18 @@ class controller {
               throw err
           }
 
-          const Food = new Food({
+          const food = new Food({
               name,
               description,
               price,
               category,
               images
           })
-          await Food.save()
+          await food.save()
   
           return await res.status(201).json({
               success: true,
-              message: `${Food.name} of price ${price} was added successfully`
+              message: `${food.name} of price ${price} was added successfully`
           })
   
       } catch (error) {
@@ -42,29 +43,29 @@ class controller {
       }
   }
 
-  static async allFood(req, res, next) {
-    try {
-      let Foods = await Food.find()
-      res.json(Foods)
-    } catch (error) {
-      next(error)
-    }
+  static async allFoods(req, res, next) {
+      try {
+        let foods = await Food.find()
+       return  await res.json(foods)
+      } catch (error) {
+        next(error)
+     }
   }
 
   static async deleteFood(req, res, next) {
     try {
-      let {foodId} = req.params
-      let foundFood = await Food.findById(foodId)
+      let foodId = req.params.id
+      let foundFood = await Food.findOne({_id: foodId})
       if (!foundFood) {
         const err = new Error()
         err.name = "Not Found"
         err.status = 404
-        err.message = "The food you looking for isnt in the requested sir"
+        err.message = "The food you looking for wasnt found sir"
         throw err
       }
       
-      const del = await Food.deleteOne()
-      res.json({"message": `${del.name} was delete succedd`})
+      const del = await foundFood.deleteOne()
+      res.json({"message": `${del.name} was delete successfully`})
     } catch (error) {
       next(error)
     }
@@ -72,13 +73,19 @@ class controller {
 
   static async makeAdmin(req, res, next) {
     try {
-     if(req.user.role !== "admin") {
-        throw new Error("sorry, you cant access this function")
-      }
       if(req.user.role === "admin") {
         const toBeAdmin = req.body.userToBeAdmin
-        await User.findByIdAndUpdate(
-          toBeAdmin,
+        const findUser = await User.findOne({email: toBeAdmin})
+        if (!findUser) {
+          return res.status(404).json("User Not Found, make sure the user is registered")
+        }
+        if (findUser.role === "admin") {
+          return res.status(406).json("Not Acceptable, this user is already an admin")
+        }
+        await User.findOneAndUpdate(
+          {
+            email: toBeAdmin
+          },
           {
             role: "admin"
           },
@@ -86,9 +93,50 @@ class controller {
             upsert: true
           }
         )
-        res.status(201)
-       }
+        res.status(201).json(`${toBeAdmin} is now an admin by ${req.user.name}`)
+      } else {
+        if(req.user.role !== "admin") {
+          throw new Error("sorry, you cant access this function")
+        }
+      }
     } catch(error) {
+      next(error)
+    }
+  }
+
+  static async makeFoodAvailable(req, res, next) {
+    try {
+      const foodToMakeAvaiableOrNot = req.body.foodName.toString()
+      const findFood = await Food.findOne({name: foodToMakeAvaiableOrNot})
+
+      if (!findFood) {
+        return res.status(404).json(`The food with the name ${foodToMakeAvaiableOrNot} is not a food here yet, do well to add the food first`)
+      }
+      
+      if (findFood.available) {
+        await findFood.updateOne(
+          {
+            available: false
+          },
+          {
+            upsert: true
+          }
+        )
+        return res.status(201).json(`${findFood.name} is no more available for order`)
+      }
+
+      if (!findFood.available) {
+        await findFood.updateOne(
+          {
+            available: true
+          },
+          {
+            upsert: true
+          }
+        )
+        return res.status(201).json(`${findFood.name} is now available for ordering`)
+      }
+    } catch (error) {
       next(error)
     }
   }

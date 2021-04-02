@@ -11,7 +11,7 @@ class order {
             let itemSummary = []
 
             // get price
-            itemsToCheckout.forEach(foodItem => {
+            itemsToCheckout.forEacH( async foodItem => {
                 const oneFood = await Food.findById(foodItem)
                 const oneFoodPrice = oneFood.price
                 const isFoodItemInCart = await userId.cart.filter((cartItem) => {
@@ -65,3 +65,5 @@ class order {
         return res.status(200).json(allUserOrder)
     }
 }
+
+module.exports = order

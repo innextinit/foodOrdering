@@ -53,6 +53,18 @@ class authorisation {
             }
         )
     }
+
+    static async isAdmin(req, res, next) {
+        try {
+            const user = req.user.role
+            if (user == "admin") {
+               return next()
+            }
+            return res.status(401).json("Authorization Required, please see you have the right authorization.")
+        } catch (error) {
+            next(error)
+        }
+    }
 }
  
 module.exports = authorisation

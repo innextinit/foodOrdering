@@ -1,31 +1,76 @@
 const express = require('express')
 const router = express.Router()
 const controller = require("../controller/index")
-
-
-// router.use("/admin", require("./admin-route"))
-// router.use("/food", require("./food-route"))
-// router.use("/user/cart", require("./cart-route"))
-// router.use("/user/ordering", require("./ordering-route"))
-
-router.post(
-    "/signup"
+const  auth = require("../middleware/auth-middleware")
+    
+router.use(
+    "/admin",
+    require("./admin-route")
 )
 
-router.post(
-    "/login"
+router.use(
+    "/food",
+    require("./food-route")
 )
 
-router.post(
-    "/edit"
+router.use(
+    "/user/cart",
+    require("./cart-route")
+)
+
+router.use(
+    "/user/ordering",
+    require("./ordering-route")
 )
 
 router.get(
-    "/:id"
+    "/",
+    controller.allFoods
 )
 
+router.post(
+    "/signup",
+    controller.newUser
+)
+    
+router.post(
+    "/login",
+    controller.login
+)
+    
+router.post(
+    "/edit",
+    auth.decodeToken,
+    controller.userUpdate
+)
+    
+router.get(
+    "/:id",
+    auth.decodeToken,
+    controller.userProfile
+)
+    
+router.post(
+    "/updatepassword",
+    auth.decodeToken,
+    controller.updatePassword
+)
+    
+router.post(
+    "/requestpasswordreset",
+    auth.decodeToken,
+    controller.requestPasswordReset
+)
+    
+router.post(
+    "/resetpassword",
+    auth.decodeToken,
+    controller.resetPassword
+)
+    
 router.delete(
-    "/:id"
+    "/:id",
+    auth.decodeToken,
+    controller.delUser
 )
-
 module.exports = router

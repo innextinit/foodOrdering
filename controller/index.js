@@ -1,4 +1,5 @@
 const User = require("../models/user-model")
+const Food = require("../models/food-model")
 const auth = require("../middleware/auth-middleware")
 const passAuth = require("../middleware/passwordHash-middleware")
 const Token = require("../models/token-model")
@@ -6,6 +7,18 @@ const crypto = require("crypto")
 const { url, APP_NAME } = require("../config/index")
 
 class controller {
+    static async allFoods(req, res, next) {
+        try {
+          const allFoods = await Food.find({available: true})
+          return res.status(200).json({
+             message: `Welcome to this foodOrdering site. <br> Check out https://github.com/innext/foodOrdering.git for the readme.md to know how to acess the endpoints`,
+             allFoodsAvailable:  allFoods
+            })
+        } catch (error) {
+          next(error)
+        }
+      }
+
     static async newUser(req, res, next) {
         let { name, password, email } = req.body
 
