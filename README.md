@@ -1,41 +1,75 @@
-This is a food ordering service.
+## About this work
+This the backend project for a food ordering platform without the implementation of the payment system. This a [NodeJS]() project built with this helping hands [ExpressJS](), [Mongoose](), [Bcrypt](), [JSONwebtoken](), [Dotenv](), [Body-Parser](), and [Nodemon]() for development.
 
+## Installation
+Use [`npm install` comman]() to install the dependencies.
+```
+$ npm install
+```
 
+## Start-Up
+Rename the [`.dev-env` file](`https://github.com/innext/foodOrdering#.dev-env`) to .env
+```
+$ mv .dev-env .env
+```
+Now, open the file to include the port the server would listen on and the mongodb url for database.
 
-This are the things that would be done at the end of this project.
+State-Up the server by running
+```
+$ node app.js
+// or nodemon if installed too
+$ nodemon app.js
+```
 
-    controller = "../controller/index"
-    auth = "../middleware/auth-middleware"
-get anyOne get all food - controller - allFoods
-post user signup - controller - newUser
-post user login - controller - login
-post user edit users profile - controller - userUpdate - auth - decodeToken
-get user get user profile - controller - userProfile - auth - decodeToken
-post user update users password - controller - updatePassword - auth - decodeToken
-get user request password reset - controller - requestPasswordReset - auth - decodeToken
-post user reset password - controller - resetPassword - auth - decodeToken
-delete user delete user - controller - delUser - auth - decodeToken
+## Usage
+Below are the methods, route, the user, and reference to the controller and auth function that performs every action.
 
-    controller = "../controller/cart"
-post user add to cart - controller - addToCart - auth - decodeToken
-get user get all cart item - controller - allCartItem - auth - decodeToken
-put user edit cart - controller - editCart - auth - decodeToken
-delete user remove from cart - controller - removeFromCart - auth - decodeToken
+Method | Route | Controller | Auth
+-----------|-----------|-----------|-----------
+get | / | allFoods | -
+post | /signup | newUser | -
+post | /login | login | -
+post | /edit | userUpdate | decodeToken
+post | /updatepassword | updatePassword | decodeToken
+post | /requestpasswordreset | requestPasswordReset | decodeToken
+post | /resetpassword | resetPassword | decodeToken
+get | /:id | userProfile | decodetoken
+delete | /:id | delUser | decodeToken
+get | /food/all | allFoods | decodeToken
+get | /food/:id | aFoodDetails | decodeToken
+get | /user/cart/ | allCartItem | decodeToken
+post | /user/cart/:id/:qty | addTocart | deodeToken
+put | /user/cart/:id/:qty | editCart | decodeToken
+delete | /user/cart/:id | removeFromCart | decodeToken
+post | /user/ordering/ | checkout | decodeToken
+get | /user/ordering/ | orderHistroy | decodeToken
+post | /admin/ | newFood | decodeToken, isAdmin
+get | /admin/allfoods | allFoods | decodeToken, isAdmin
+post | /admin/makeavailable | makeFoodAvailable | decodeToken, isAdmin
+post | /admin/makeadmin | makeAdmin | decodetoken, isAdmin
+delete | /admin/:id | deleteFood | decodetoken, isAdmin
 
-    controller = "../controller/order"
-post user get cart item to checkout - controller - checkout - auth - decodeToken
-get user get all order histroy - controller - orderHistroy - auth - decodeToken
+### Order Information
+There is postman file with this project [foodOrdering.postman_collection.json]() that would help during testing. Also, you can quickly create test users with the [createUser.js]() file by **uncommenting** the last line in app.js file to have `require("./createUser")`
 
-    controller = "../controller/food"
-get food get all foods - controller - allFoods - auth - decodeToken
-get food get details by id - controller -aFoodDetails - auth - decodeToken
+```
+...
+...
+...
+app.listen(PORT, async () => {
+    await require("./config/mongodbconfig")()
+    console.log(`::> Server listening on port ${ PORT } @ http://localhost:${ PORT }`)
+})
 
-    controller = "../controller/admin"
-post admin new food - controller - newFood - auth - decodeToken - isAdmin
-get admin all foods - controller - allFoods - auth - decodeToken - isAdmin
-delete admin delete food by id - controller - deleteFood - auth - decodeToken - isAdmin
-post admin make user admin - controller -makeAdmin - auth - decodeToken - isAdmin
-post admin make food available -controller - makeFoodAvailable - auth - decodeToken - isAdmin
+module.exports = app
+//  require("./createUser")             <<<<--------
+```
+In the console you would get this same message
+```
+Here is the login details for admin, email: admin@testmail.com, password: Password&123
+Here is the login details for user, email: user@testmail.com, password: Password&123
+```
+You can use those details to start, do not for to comment that line back when the users are created. **Enjoy**
 
-
-This project is having the postman collection. I would at the end of this project add the things needed to run this project on your end like MongoDB database connection, etc.
+### Issues
+Any issue? please create the issue with full details of the issue, would get to it.

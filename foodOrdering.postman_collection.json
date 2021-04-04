@@ -1,0 +1,2026 @@
+{
+	"info": {
+		"_postman_id": "2c5c3db8-ee80-420a-9799-5acc8e71bad9",
+		"name": "food ordering",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "cart",
+					"item": [
+						{
+							"name": "add to cart",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{cart}}/:id/:qty",
+									"host": [
+										"{{cart}}"
+									],
+									"path": [
+										":id",
+										":qty"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6066e876ef56251674cf166e",
+											"description": "the id of the food to be added to the cart"
+										},
+										{
+											"key": "qty",
+											"value": "1",
+											"description": "the qty of the product to get"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "add to cart",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{cart}}/:id/:qty",
+											"host": [
+												"{{cart}}"
+											],
+											"path": [
+												":id",
+												":qty"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "6068d9c1fbcb0415c2ad6693",
+													"description": "the id of the food to be added to the cart"
+												},
+												{
+													"key": "qty",
+													"value": "1",
+													"description": "the qty of the product to get"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "30"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1e-+utoab+8P6zxnYzAKZ+U/L6ELdE\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 03 Apr 2021 21:25:03 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "\"garri was added successfully\""
+								}
+							]
+						},
+						{
+							"name": "get all cart",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cart}}/",
+									"host": [
+										"{{cart}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "get all cart",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{cart}}/",
+											"host": [
+												"{{cart}}"
+											],
+											"path": [
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "493"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1ed-IJeYnzLp+WPJZg1Q5J3xxafxZHU\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 04 Apr 2021 04:35:53 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"_id\": \"6068cd6ed449311098ff7e81\",\n        \"userId\": \"60659de09d9e41264838c4ad\",\n        \"qty\": 2,\n        \"__v\": 0,\n        \"foodId\": \"6066e876ef56251674cf166e\"\n    },\n    {\n        \"_id\": \"6068d6a28c37e5149a93e6a7\",\n        \"userId\": \"60659de09d9e41264838c4ad\",\n        \"foodId\": \"6068d6173fbfc11401ee31f2\",\n        \"qty\": 1,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6068dd2fe74f02185ca71b7b\",\n        \"userId\": \"60659de09d9e41264838c4ad\",\n        \"foodId\": \"6068d9c1fbcb0415c2ad6693\",\n        \"qty\": 1,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6068dda6e74f02185ca71b7c\",\n        \"userId\": \"60659de09d9e41264838c4ad\",\n        \"foodId\": \"6066c4cf6ab6ec132492a470\",\n        \"qty\": 1,\n        \"__v\": 0\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "edit cart",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{cart}}/:id/:qty",
+									"host": [
+										"{{cart}}"
+									],
+									"path": [
+										":id",
+										":qty"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6068d6a28c37e5149a93e6a7",
+											"description": "the cart item id of the food to be updated"
+										},
+										{
+											"key": "qty",
+											"value": "4",
+											"description": "the new qty for that food"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "edit cart",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{cart}}/:id/:qty",
+											"host": [
+												"{{cart}}"
+											],
+											"path": [
+												":id",
+												":qty"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "6068d6a28c37e5149a93e6a7",
+													"description": "the cart item id of the food to be updated"
+												},
+												{
+													"key": "qty",
+													"value": "5",
+													"description": "the new qty for that food"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "47"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2f-uef2kSAO6+FTjZB298ZD2P3hf0Y\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 04 Apr 2021 05:18:58 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "\"6068d6173fbfc11401ee31f2 qty was updated to 5\""
+								}
+							]
+						},
+						{
+							"name": "remove item",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cart}}/:id",
+									"host": [
+										"{{cart}}"
+									],
+									"path": [
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6068cd6ed449311098ff7e81",
+											"description": "id of item to remove from cart"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "remove item",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{cart}}/:id",
+											"host": [
+												"{{cart}}"
+											],
+											"path": [
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "6068cd6ed449311098ff7e81",
+													"description": "id of item to remove from cart"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "48"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"30-WNRF+D9elO86KcDPeDdYSWeKWNM\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 04 Apr 2021 06:12:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "\"6066e876ef56251674cf166e was removed from cart\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "order",
+					"item": [
+						{
+							"name": "order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "items",
+											"value": "6069bf3aafa9402dd79853d3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{ordering}}/",
+									"host": [
+										"{{ordering}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "order",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "items",
+													"value": "6068dd2fe74f02185ca71b7b,6068dda6e74f02185ca71b7c,606958f37377271a991972d2",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{ordering}}/",
+											"host": [
+												"{{ordering}}"
+											],
+											"path": [
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "428"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1ac-zWFGF2PX00QfbPd7BMZ3t+51HW0\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 04 Apr 2021 13:08:17 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"address\": \"futa northgate\",\n    \"phone\": 2348045679551,\n    \"itemSummary\": [\n        {\n            \"foodName\": \"garri\",\n            \"foodId\": \"6068d9c1fbcb0415c2ad6693\",\n            \"foodQyt\": 1,\n            \"eachFoodPrice\": 5,\n            \"oneFoodPriceWithQyt\": 5\n        },\n        {\n            \"foodName\": \"rice\",\n            \"foodId\": \"6066c4cf6ab6ec132492a470\",\n            \"foodQyt\": 1,\n            \"eachFoodPrice\": 10,\n            \"oneFoodPriceWithQyt\": 10\n        },\n        {\n            \"foodName\": \"beans with gari\",\n            \"foodId\": \"6066e876ef56251674cf166e\",\n            \"foodQyt\": 1,\n            \"eachFoodPrice\": 13,\n            \"oneFoodPriceWithQyt\": 13\n        }\n    ],\n    \"totalPrice\": 28\n}"
+								}
+							]
+						},
+						{
+							"name": "all ordered",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ordering}}",
+									"host": [
+										"{{ordering}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "all ordered",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{ordering}}",
+											"host": [
+												"{{ordering}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1257"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4e9-W7DtXiUjWa44ZTygze5k5jxRI5U\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 04 Apr 2021 13:29:50 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"items\": [\n            [\n                {\n                    \"foodName\": \"garri\",\n                    \"foodId\": \"6068d9c1fbcb0415c2ad6693\",\n                    \"foodQyt\": 1,\n                    \"eachFoodPrice\": 5,\n                    \"oneFoodPriceWithQyt\": 5\n                }\n            ],\n            [\n                {\n                    \"foodName\": \"rice\",\n                    \"foodId\": \"6066c4cf6ab6ec132492a470\",\n                    \"foodQyt\": 1,\n                    \"eachFoodPrice\": 10,\n                    \"oneFoodPriceWithQyt\": 10\n                }\n            ],\n            [\n                {\n                    \"foodName\": \"beans with gari\",\n                    \"foodId\": \"6066e876ef56251674cf166e\",\n                    \"foodQyt\": 1,\n                    \"eachFoodPrice\": 13,\n                    \"oneFoodPriceWithQyt\": 13\n                }\n            ]\n        ],\n        \"_id\": \"6069ba41d239d42bee9ba420\",\n        \"orderId\": \"60659de09d9e41264838c4ad\",\n        \"address\": \"futa northgate\",\n        \"phone\": \"2348045679551\",\n        \"totalAmount\": 28,\n        \"orderDate\": \"2021-04-04T13:08:17.983Z\",\n        \"paidThrough\": \"card\",\n        \"__v\": 0\n    },\n    {\n        \"items\": [\n            [\n                {\n                    \"foodName\": \"beans with gari\",\n                    \"foodId\": \"6066e876ef56251674cf166e\",\n                    \"foodQyt\": 1,\n                    \"eachFoodPrice\": 13,\n                    \"oneFoodPriceWithQyt\": 13\n                }\n            ]\n        ],\n        \"_id\": \"6069bedd6ff5892d8aa41065\",\n        \"orderId\": \"60659de09d9e41264838c4ad\",\n        \"address\": \"futa northgate\",\n        \"phone\": \"2348045679551\",\n        \"totalAmount\": 13,\n        \"orderDate\": \"2021-04-04T13:27:57.237Z\",\n        \"paidThrough\": \"card\",\n        \"__v\": 0\n    },\n    {\n        \"items\": [\n            [\n                {\n                    \"foodName\": \"beans with gari\",\n                    \"foodId\": \"6066e876ef56251674cf166e\",\n                    \"foodQyt\": 1,\n                    \"eachFoodPrice\": 13,\n                    \"oneFoodPriceWithQyt\": 13\n                }\n            ]\n        ],\n        \"_id\": \"6069bf4aafa9402dd79853d4\",\n        \"orderId\": \"60659de09d9e41264838c4ad\",\n        \"address\": \"futa southgate\",\n        \"phone\": \"2348045679551\",\n        \"totalAmount\": 13,\n        \"orderDate\": \"2021-04-04T13:29:46.441Z\",\n        \"paidThrough\": \"card\",\n        \"__v\": 0\n    }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "get all foods",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{users}}/",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "this the welcome page with a return of all food and welcome message"
+					},
+					"response": [
+						{
+							"name": "get all foods",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{users}}/",
+									"host": [
+										"{{users}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "779"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30b-zk//AresW1y5RaE+O2gbi3yNpqg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 04 Apr 2021 04:32:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Welcome to this foodOrdering site. <br> Check out https://github.com/innext/foodOrdering.git for the readme.md to know how to acess the endpoints\",\n    \"allFoodsAvailable\": [\n        {\n            \"available\": true,\n            \"images\": [],\n            \"_id\": \"6066c4cf6ab6ec132492a470\",\n            \"name\": \"rice\",\n            \"description\": \"local nig rice\",\n            \"price\": 10,\n            \"category\": \"African\",\n            \"__v\": 0\n        },\n        {\n            \"available\": true,\n            \"images\": [],\n            \"_id\": \"6066e876ef56251674cf166e\",\n            \"name\": \"beans with gari\",\n            \"description\": \"sweet beans\",\n            \"price\": 13,\n            \"category\": \"African\",\n            \"__v\": 0\n        },\n        {\n            \"available\": true,\n            \"images\": [],\n            \"_id\": \"6068d6173fbfc11401ee31f2\",\n            \"name\": \"beans only\",\n            \"description\": \"sweet beans\",\n            \"price\": 15,\n            \"category\": \"African\",\n            \"__v\": 0\n        },\n        {\n            \"available\": true,\n            \"images\": [],\n            \"_id\": \"6068d9c1fbcb0415c2ad6693\",\n            \"name\": \"garri\",\n            \"description\": \"garri\",\n            \"price\": 5,\n            \"category\": \"African\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "sign up",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "testName",
+									"description": "the users name",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "tH!3anE*ample",
+									"description": "the users password",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test@email.com",
+									"description": "the users unique email",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{users}}/signup",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "sign up",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "testName",
+											"description": "the users name",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "tH!3anE*ample",
+											"description": "the users password",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "test@mail.com",
+											"description": "the users unique email",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{users}}/signup",
+									"host": [
+										"{{users}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "348"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15c-/lD5kaQ62XDfrzR64V9dp5jk8/k\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Apr 2021 10:18:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status\": 201,\n    \"message\": \"User created successfully\",\n    \"user\": {\n        \"email\": \"test@mail.com\",\n        \"role\": \"user\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJyb2xlIjoidXNlciIsIl9pZCI6IjYwNjU5ZGUwOWQ5ZTQxMjY0ODM4YzRhZCIsImlhdCI6MTYxNzI3MjI4OCwiZXhwIjoxNjE3Mjc1ODg4fQ.r-o7214py8vpIZrqM0VeXn70J7da0FZPBgPyvn_4v9w\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test@mail.com",
+									"description": "the users unique email",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "tH!3anE*ampleTtr",
+									"description": "the password used during creating an account",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{users}}/login",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "test@mail.com",
+											"description": "the users unique email",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "tH!3anE*ample",
+											"description": "the password used during creating an account",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{users}}/login",
+									"host": [
+										"{{users}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"129-rUCNMa6cdSaqwzx/84MQChBhbEA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Apr 2021 10:24:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"user\": {\n        \"email\": \"test@mail.com\",\n        \"role\": \"user\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJyb2xlIjoidXNlciIsIl9pZCI6IjYwNjU5ZGUwOWQ5ZTQxMjY0ODM4YzRhZCIsImlhdCI6MTYxNzI3MjcwMSwiZXhwIjoxNjE3Mjc2MzAxfQ.9RbpKlrnjUhZ05UmiHCwWmG1U7-XB7qdKJfLJJNUniI\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "edit users pofile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Inioluwa",
+									"description": "the username",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "futa southgate",
+									"description": "the address where food would be sent",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "2348045679551",
+									"description": "the number to call on getting to the address",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{users}}/edit",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								"edit"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "edit users pofile",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Inioluwa",
+											"description": "the username",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "futa northgate",
+											"description": "the address where food would be sent",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "2348045679551",
+											"description": "the number to call on getting to the address",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{users}}/edit",
+									"host": [
+										"{{users}}"
+									],
+									"path": [
+										"edit"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c-9CSp0YZbwVi1S/g+0CyT4pOh1+k\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 04 Apr 2021 12:46:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"n\": 1,\n    \"nModified\": 1,\n    \"ok\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "view user profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{users}}/:id",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "60659de09d9e41264838c4ad",
+									"description": "the user id to get its details"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "view user profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{users}}/:id",
+									"host": [
+										"{{users}}"
+									],
+									"path": [
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "60659de09d9e41264838c4ad",
+											"description": "the user id to get its details"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "271"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10f-gfEoz+7/0AFRx9mtSBIaVw7jo4w\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Apr 2021 11:03:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"order\": [],\n    \"role\": \"user\",\n    \"_id\": \"60659de09d9e41264838c4ad\",\n    \"name\": \"Inioluwa\",\n    \"password\": \"$2b$15$QMsZZXYOegwI2GW1WumqmuOasRsV2IsK2/LeY42r7cInlOtbQ6zHK\",\n    \"email\": \"test@mail.com\",\n    \"cart\": [],\n    \"createdAt\": \"2021-04-01T10:18:08.039Z\",\n    \"updatedAt\": \"2021-04-01T10:36:43.214Z\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "update password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "tH!3anE*ample",
+									"type": "text"
+								},
+								{
+									"key": "newPassword",
+									"value": "tH!3anE*ampleTT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{users}}/updatepassword",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								"updatepassword"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "password",
+											"value": "tH!3anE*ample",
+											"type": "text"
+										},
+										{
+											"key": "newPassword",
+											"value": "tH!3anE*ampleTT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{users}}/updatepassword",
+									"host": [
+										"{{users}}"
+									],
+									"path": [
+										"updatepassword"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-BVWytgaJWr5l3kIJ/cw1NdFr5Us\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Apr 2021 11:08:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"password reset successful\",\n    \"status\": 201\n}"
+						}
+					]
+				},
+				{
+					"name": "request password reset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test@mail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{users}}/requestpasswordreset",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								"requestpasswordreset"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "request password reset",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "test@mail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{users}}/requestpasswordreset",
+									"host": [
+										"{{users}}"
+									],
+									"path": [
+										"requestpasswordreset"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "151"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"97-4N0tw0L+UabYeGtuqLIyqcDe2A8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Apr 2021 11:22:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "\"http://localhost:2021/users/resetpassword?userId=60659de09d9e41264838c4ad&resetToken=76f4672fd75d81413526091ccbf356491c2e5a4d5878d92171e83ebc8ec06695\""
+						}
+					]
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "tH!3anE*ampleTtr",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{users}}/resetpassword?userId=60659de09d9e41264838c4ad&resetToken=76f4672fd75d81413526091ccbf356491c2e5a4d5878d92171e83ebc8ec06695",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								"resetpassword"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "60659de09d9e41264838c4ad"
+								},
+								{
+									"key": "resetToken",
+									"value": "76f4672fd75d81413526091ccbf356491c2e5a4d5878d92171e83ebc8ec06695"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "reset password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "password",
+											"value": "tH!3anE*ampleTtr",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{users}}/resetpassword?userId=60659de09d9e41264838c4ad&resetToken=76f4672fd75d81413526091ccbf356491c2e5a4d5878d92171e83ebc8ec06695",
+									"host": [
+										"{{users}}"
+									],
+									"path": [
+										"resetpassword"
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": "60659de09d9e41264838c4ad"
+										},
+										{
+											"key": "resetToken",
+											"value": "76f4672fd75d81413526091ccbf356491c2e5a4d5878d92171e83ebc8ec06695"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-BVWytgaJWr5l3kIJ/cw1NdFr5Us\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Apr 2021 11:24:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"password reset successful\",\n    \"status\": 201\n}"
+						}
+					]
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwicm9sZSI6InVzZXIiLCJfaWQiOiI2MDY1YWJjMGQ2YmZjYjJhYzNkNGNmYTQiLCJpYXQiOjE2MTcyNzU4NDAsImV4cCI6MTYxNzI3OTQ0MH0.TFF7zOp_RK_xgpet_RBm4wK_tji2yfpCxo1WasHdr6g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{users}}/:id",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6065abc0d6bfcb2ac3d4cfa4",
+									"description": "the user id to delete"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete user",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{users}}/:id",
+									"host": [
+										"{{users}}"
+									],
+									"path": [
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6065abc0d6bfcb2ac3d4cfa4",
+											"description": "the user id to delete"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "272"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"110-SIokFJutqw8FJ0wvbL0lqOlx2X8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Apr 2021 11:20:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"order\": [],\n    \"role\": \"user\",\n    \"_id\": \"6065abc0d6bfcb2ac3d4cfa4\",\n    \"name\": \"testName\",\n    \"password\": \"$2b$15$v8bymXP2UP8cd9/Q/WgmqO3q.l3yMPLjcfyM2lhGyCAzULp3kqjjC\",\n    \"email\": \"test@email.com\",\n    \"cart\": [],\n    \"createdAt\": \"2021-04-01T11:17:20.492Z\",\n    \"updatedAt\": \"2021-04-01T11:17:20.492Z\",\n    \"__v\": 0\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Food",
+			"item": [
+				{
+					"name": "Get all food",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{food}}/all",
+							"host": [
+								"{{food}}"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all food",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{food}}/all",
+									"host": [
+										"{{food}}"
+									],
+									"path": [
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "307"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"133-pGJf66VdK1byDMUGE4xrWXZWOAs\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Apr 2021 11:45:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"available\": true,\n        \"images\": [],\n        \"_id\": \"6066c4cf6ab6ec132492a470\",\n        \"name\": \"rice\",\n        \"description\": \"local nig rice\",\n        \"price\": 10,\n        \"category\": \"African\",\n        \"__v\": 0\n    },\n    {\n        \"available\": true,\n        \"images\": [],\n        \"_id\": \"6066e876ef56251674cf166e\",\n        \"name\": \"beans with gari\",\n        \"description\": \"sweet beans\",\n        \"price\": 13,\n        \"category\": \"African\",\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get food by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{food}}/:id",
+							"host": [
+								"{{food}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6066e876ef56251674cf166e"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get food by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{food}}/:id",
+									"host": [
+										"{{food}}"
+									],
+									"path": [
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6066e876ef56251674cf166e"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "156"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9c-7Ub1TGel7poNvwR/dyDeFDyIYIU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Apr 2021 11:46:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"available\": true,\n    \"images\": [],\n    \"_id\": \"6066e876ef56251674cf166e\",\n    \"name\": \"beans with gari\",\n    \"description\": \"sweet beans\",\n    \"price\": 13,\n    \"category\": \"African\",\n    \"__v\": 0\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "make an admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userToBeAdmin",
+									"value": "test@email.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{admin}}/makeadmin",
+							"host": [
+								"{{admin}}"
+							],
+							"path": [
+								"makeadmin"
+							]
+						},
+						"description": "used by an admin to make a user an admin"
+					},
+					"response": [
+						{
+							"name": "make an admin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userToBeAdmin",
+											"value": "test@email.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{admin}}/makeadmin",
+									"host": [
+										"{{admin}}"
+									],
+									"path": [
+										"makeadmin"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-PZOba0YWpg2zSaH5Ot1GLp3zNO4\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Apr 2021 12:10:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "\"test@email.com is now an admin by Inioluwa\""
+						}
+					]
+				},
+				{
+					"name": "Add new food",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "garri",
+									"description": "the name of the food",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "garri",
+									"description": "the description of the food you about to add",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "5",
+									"description": "the price of the food",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "African",
+									"description": "the category the food should belong, incase of sorting",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "image",
+									"description": "the image of the food",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{admin}}/",
+							"host": [
+								"{{admin}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add new food",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "amala1",
+											"description": "the name of the food",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "yoruba meal",
+											"description": "the description of the food you about to add",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "20",
+											"description": "the price of the food",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "African",
+											"description": "the category the food should belong, incase of sorting",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"value": "image.jpg",
+											"description": "the image of the food",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{admin}}/",
+									"host": [
+										"{{admin}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-aaaN2OEzvkGz6ATZ/Zd7c6IT6EE\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Apr 2021 13:46:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"amala1 of price 20 was added successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "all food",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{admin}}/allfoods",
+							"host": [
+								"{{admin}}"
+							],
+							"path": [
+								"allfoods"
+							]
+						},
+						"description": "to get all the food avaiable"
+					},
+					"response": [
+						{
+							"name": "all food",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{admin}}/allfoods",
+									"host": [
+										"{{admin}}"
+									],
+									"path": [
+										"allfoods"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "262"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"106-ge8hqz91o2VIfsOLZodqQtRl9Qw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Apr 2021 14:05:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"images\": [],\n        \"_id\": \"6065b1f65aad612d62037b0d\",\n        \"name\": \"amala\",\n        \"description\": \"yoruba meal\",\n        \"price\": 20,\n        \"category\": \"African\",\n        \"__v\": 0\n    },\n    {\n        \"images\": [],\n        \"_id\": \"6065ceccf5332735aae540fe\",\n        \"name\": \"amala1\",\n        \"description\": \"yoruba meal\",\n        \"price\": 20,\n        \"category\": \"African\",\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "make food available to users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "foodName",
+									"value": "beans only",
+									"description": "the name of the food to make availabe or not",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{admin}}/makeavailable",
+							"host": [
+								"{{admin}}"
+							],
+							"path": [
+								"makeavailable"
+							]
+						},
+						"description": "this helps to make food availabe to user so they can order or make it unavailable if they arent selling the food for sometime"
+					},
+					"response": [
+						{
+							"name": "make food available to users",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "foodName",
+											"value": "rice",
+											"description": "the name of the food to make availabe or not",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{admin}}/makeavailable",
+									"host": [
+										"{{admin}}"
+									],
+									"path": [
+										"makeavailable"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-g+yN+wvE3wJgrBRCel8wLUM0J6M\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Apr 2021 10:22:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "\"rice is now available for ordering\""
+						}
+					]
+				},
+				{
+					"name": "delete food",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{admin}}/:id",
+							"host": [
+								"{{admin}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6065d41e803e1f395eea76c6"
+								}
+							]
+						},
+						"description": "delete a food id"
+					},
+					"response": [
+						{
+							"name": "delete food",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{admin}}/:id",
+									"host": [
+										"{{admin}}"
+									],
+									"path": [
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6065d41e803e1f395eea76c6"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-Fg5Xs3gDDQOe7E10Moj21WBptgw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Apr 2021 07:16:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"rice was delete successfully\"\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJfaWQiOiI2MDY1OWRlMDlkOWU0MTI2NDgzOGM0YWQiLCJpYXQiOjE2MTc1NDI2NTQsImV4cCI6MTYxNzU0NjI1NH0.9KE7Xtzcesnqm5ftP-hwzcoXXOcLEdUBazmKwNMeBtQ",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

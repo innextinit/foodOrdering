@@ -44,12 +44,6 @@ router.post(
     controller.userUpdate
 )
     
-router.get(
-    "/:id",
-    auth.decodeToken,
-    controller.userProfile
-)
-    
 router.post(
     "/updatepassword",
     auth.decodeToken,
@@ -67,7 +61,12 @@ router.post(
     auth.decodeToken,
     controller.resetPassword
 )
-    
+router.get(
+    "/:id",
+    auth.decodeToken,
+    controller.userProfile
+)
+
 router.delete(
     "/:id",
     auth.decodeToken,

@@ -5,7 +5,6 @@ const app = express()
 const bodyParser = require("body-parser")
 const { PORT } = process.env
 
-// for parsing application/json
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
@@ -17,3 +16,4 @@ app.listen(PORT, async () => {
 })
 
 module.exports = app
+//  require("./createUser")

@@ -3,6 +3,13 @@ const router = express.Router()
 const controller = require("../controller/admin")
 const auth = require("../middleware/auth-middleware")
 
+router.post(
+    "/",
+    auth.decodeToken,
+    auth.isAdmin,
+    controller.newFood
+)
+
 router.get(
     "/allfoods",
     auth.decodeToken,
@@ -11,10 +18,10 @@ router.get(
 )
 
 router.post(
-    "/",
+    "/makeavailable",
     auth.decodeToken,
     auth.isAdmin,
-    controller.newFood
+    controller.makeFoodAvailable
 )
 
 router.post(
@@ -22,13 +29,6 @@ router.post(
     auth.decodeToken,
     auth.isAdmin,
     controller.makeAdmin
-)
-
-router.post(
-    "/makeavailable",
-    auth.decodeToken,
-    auth.isAdmin,
-    controller.makeFoodAvailable
 )
 
 router.delete(
