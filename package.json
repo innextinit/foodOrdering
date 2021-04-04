@@ -4,7 +4,8 @@
   "description": "food-ordering backend",
   "main": "app.js",
   "scripts": {
-    "test": "node app.js"
+    "start": "node app.js",
+    " dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
