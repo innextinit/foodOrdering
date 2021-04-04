@@ -18,10 +18,11 @@ get user request password reset - controller - requestPasswordReset - auth - dec
 post user reset password - controller - resetPassword - auth - decodeToken
 delete user delete user - controller - delUser - auth - decodeToken
 
-post user add to cart
-get user get all cart item
-put user edit cart
-delete user remove from cart
+    controller = "../controller/cart"
+post user add to cart - controller - addToCart - auth - decodeToken
+get user get all cart item - controller - allCartItem - auth - decodeToken
+put user edit cart - controller - editCart - auth - decodeToken
+delete user remove from cart - controller - removeFromCart - auth - decodeToken
 
 get user get cart item to checkout
 get user get all order histroy
