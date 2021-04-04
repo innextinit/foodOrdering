@@ -10,7 +10,7 @@ const orderSchema = new Schema(
 
         items: [
             {
-            type: String,
+            type: Array,
             required: true,
             },
         ],

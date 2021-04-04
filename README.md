@@ -6,9 +6,7 @@ This are the things that would be done at the end of this project.
 
     controller = "../controller/index"
     auth = "../middleware/auth-middleware"
-
 get anyOne get all food - controller - allFoods
-
 post user signup - controller - newUser
 post user login - controller - login
 post user edit users profile - controller - userUpdate - auth - decodeToken
@@ -24,8 +22,9 @@ get user get all cart item - controller - allCartItem - auth - decodeToken
 put user edit cart - controller - editCart - auth - decodeToken
 delete user remove from cart - controller - removeFromCart - auth - decodeToken
 
-get user get cart item to checkout
-get user get all order histroy
+    controller = "../controller/order"
+post user get cart item to checkout - controller - checkout - auth - decodeToken
+get user get all order histroy - controller - orderHistroy - auth - decodeToken
 
     controller = "../controller/food"
 get food get all foods - controller - allFoods - auth - decodeToken

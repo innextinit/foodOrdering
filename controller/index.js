@@ -109,10 +109,10 @@ class controller {
     static async userUpdate(req, res, next) {
         const user = req.user
         try {
-            let { name } = req.body
+            let { name, address, phone } = req.body
             const update = await User.updateOne(
                 { _id: user._id},
-                { $set: { name: name } },
+                { $set: { name: name, address: address, phone, phone } },
                 { new: true }
             )
             return await res.json(update)
