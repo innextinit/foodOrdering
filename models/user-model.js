@@ -54,15 +54,8 @@ const userSchema = new Schema(
 
         cart: [
             {
-            food: {
-                    type: Schema.Types.ObjectId,
-                    ref: "Food",
-                    required: true,
-                },
-            qty: {
-                   type: Number,
-                   require: true
-                }               
+                type: Schema.Types.ObjectId,
+                ref: "Cart"
             }
         ],
 

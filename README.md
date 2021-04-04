@@ -21,7 +21,7 @@ delete user delete user - controller - delUser - auth - decodeToken
 post user add to cart
 get user get all cart item
 put user edit cart
-post user remove from cart
+delete user remove from cart
 
 get user get cart item to checkout
 get user get all order histroy
