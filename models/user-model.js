@@ -9,7 +9,7 @@ const userSchema = new Schema(
         required: [true, "Name is required"],
         validate: {
             validator: (value) => {
-                return /^[a-zA-Z]{2,15}$/.test(value)
+                return /^[a-zA-Z -]{2,15}$/.test(value)
             },
             message: problem => `${problem.value} is not a valid name`
             }

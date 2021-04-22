@@ -2,10 +2,10 @@
   "name": "food-ordering",
   "version": "1.1.0",
   "description": "food-ordering backend",
-  "main": "app.js",
+  "main": "cluter.js",
   "scripts": {
-    "start": "node app.js",
-    " dev": "nodemon app.js"
+    "start": "node cluter.js",
+    " dev": "nodemon cluter.js"
   },
   "repository": {
     "type": "git",
@@ -27,9 +27,13 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
+    "connect-multiparty": "^2.2.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-upload": "^0.1.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.1"
+    "mongoose": "^5.12.1",
+    "multer": "^1.4.2"
   }
 }

@@ -2,7 +2,7 @@
 This the backend project for a food ordering platform without the implementation of the payment system. This a [NodeJS]() project built with this helping hands [ExpressJS](), [Mongoose](), [Bcrypt](), [JSONwebtoken](), [Dotenv](), [Body-Parser](), and [Nodemon]() for development.
 
 ## Installation
-Use [`npm install` comman]() to install the dependencies.
+Use [`npm install` command]() to install the dependencies.
 ```
 $ npm install
 ```
@@ -16,9 +16,9 @@ Now, open the file to include the port the server would listen on and the mongod
 
 State-Up the server by running
 ```
-$ node app.js
+$ node cluter.js
 // or nodemon if installed too
-$ nodemon app.js
+$ nodemon cluter.js
 ```
 
 ## Usage
@@ -50,7 +50,7 @@ post | /admin/makeadmin | makeAdmin | decodetoken, isAdmin
 delete | /admin/:id | deleteFood | decodetoken, isAdmin
 
 ### Order Information
-There is postman file with this project [foodOrdering.postman_collection.json]() that would help during testing. Also, you can quickly create test users with the [createUser.js]() file by **uncommenting** the last line in app.js file to have `require("./createUser")`
+There is postman file with this project [foodOrdering.postman_collection.json]() that would help during testing. Also, you can quickly create test users with the [createNewData.js]() file by **uncommenting** the last line in app.js file to have `require("./createNewData")`
 
 ```
 ...
@@ -62,10 +62,17 @@ app.listen(PORT, async () => {
 })
 
 module.exports = app
-//  require("./createUser")             <<<<--------
+//  require("./createNewData")             <<<<--------
 ```
 In the console you would get this same message
 ```
+beans with dodo was added with the 15 to the category African
+rice was added with the 15 to the category African
+yam with egg was added with the 15 to the category African
+yam was added with the 15 to the category African
+rice and beans was added with the 15 to the category African
+rice with dodo was added with the 15 to the category African
+
 Here is the login details for admin, email: admin@testmail.com, password: Password&123
 Here is the login details for user, email: user@testmail.com, password: Password&123
 ```

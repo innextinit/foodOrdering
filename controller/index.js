@@ -9,11 +9,12 @@ const { url, APP_NAME } = require("../config/index")
 class controller {
     static async allFoods(req, res, next) {
         try {
-          const allFoods = await Food.find({available: true})
-          return res.status(200).json({
-             message: `Welcome to this foodOrdering site. <br> Check out https://github.com/innext/foodOrdering.git for the readme.md to know how to acess the endpoints`,
-             allFoodsAvailable:  allFoods
-            })
+            res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out")
+          //const allFoods = await Food.find({available: true})
+        //   return res.status(200).json({
+            //  message: `Welcome to this foodOrdering site. <br> Check out https://github.com/innext/foodOrdering.git for the readme.md to know how to acess the endpoints`,
+            //  allFoodsAvailable:  allFoods
+            // })
         } catch (error) {
           next(error)
         }

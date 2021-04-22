@@ -1,40 +1,43 @@
 const express = require("express")
 const router = express.Router()
 const controller = require("../controller/admin")
-const auth = require("../middleware/auth-middleware")
+//const auth = require("../middleware/auth-middleware")
 
+router.get("/", (req, res) => {
+    res.sendFile(__dirname + "/index.html")
+})
 router.post(
     "/",
-    auth.decodeToken,
-    auth.isAdmin,
-    controller.newFood
+    //auth.decodeToken,
+    //auth.isAdmin,
+   controller.newFood
 )
 
 router.get(
     "/allfoods",
-    auth.decodeToken,
-    auth.isAdmin,
+    //auth.decodeToken,
+    //auth.isAdmin,
     controller.allFoods
 )
 
 router.post(
     "/makeavailable",
-    auth.decodeToken,
-    auth.isAdmin,
+    //auth.decodeToken,
+    //auth.isAdmin,
     controller.makeFoodAvailable
 )
 
 router.post(
     "/makeadmin",
-    auth.decodeToken,
-    auth.isAdmin,
+    //auth.decodeToken,
+    //auth.isAdmin,
     controller.makeAdmin
 )
 
 router.delete(
     "/:id",
-    auth.decodeToken,
-    auth.isAdmin,
+    //auth.decodeToken,
+    //auth.isAdmin,
     controller.deleteFood
 )
  

@@ -1,43 +1,68 @@
 const Food = require("../models/food-model")
 const User = require("../models/user-model")
+const Crypto = require("crypto")
+const path = require("path")
 
 class controller {
   static async newFood(req, res, next) {
-      let { name, description, price, category, images } = req.body
-
       try {
-          if (!name || !price || !description) {
-            const err = new Error()
-            err.name = "Bad Request"
-            err.status = 400
-            err.message = "Please fill all required details"
-            throw err
-          }
-  
-          const foundName = await Food.findOne({"name": name})
-  
-          if (foundName) {
-              const err = new Error()
-              err.name = "Not Acceptable"
-              err.status = 406
-              err.message = "This food name dey meun before sir/ma"
-              throw err
-          }
+        let { name, description, price, category } = req.body
+        let image = req.files.image
+        let imageName = Crypto.randomBytes(16).toString("hex") + image.name
+        let uploadPath = path.join(__dirname, "../uploads/") + imageName
+        console.log(uploadPath)
+            
+        if (!req.files || Object.keys(req.files).length === 0) {
+          return res.status(400).send('No files were uploaded.');
+        }
 
-          const food = new Food({
-              name,
-              description,
-              price,
-              category,
-              images
-          })
-          await food.save()
-  
-          return await res.status(201).json({
-              success: true,
-              message: `${food.name} of price ${price} was added successfully`
-          })
-  
+        image.mv(uploadPath, function(err) {
+          // for upload to db.
+          // var user = req.body;
+            // user.avatar.data = fs.readFileSync(req.file.path);
+            // user.avatar.contentType = req.file.mimetype;
+                    
+            // User.addUser(user, (err, user) => {
+                // ...
+            // });
+
+          if (err)
+            return res.status(500).send(err);
+          res.send('File uploaded!');
+        })
+        
+        // if (!name || !price || !description || !image) {
+          // const err = new Error()
+          // err.name = "Bad Request"
+          // err.status = 400
+          // err.message = "Please fill all required details"
+          // throw err
+        // }
+
+        // const foundName = await Food.findOne({"name": name})
+
+        // if (foundName) {
+            // const err = new Error()
+            // err.name = "Not Acceptable"
+            // err.status = 406
+            // err.message = "This food name dey meun before sir/ma"
+            // throw err
+        // }
+
+        // const food = new Food({
+            // name,
+            // description,
+            // price,
+            // category,
+            // //images: imageName
+        // })
+        // await food.save()
+
+        // return await res.status(201).json({
+            // success: true,
+            // message: `${food.name} of price ${price} was added successfully`
+        // })
+
       } catch (error) {
           next(error)
       }

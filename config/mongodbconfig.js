@@ -14,7 +14,7 @@ const options = {
 module.exports = async () => {
      try {
           await mongoose.connect(MONGODB_URI, options)
-          console.log(`:::> Connected to MongoDB database ${ MONGODB_URI }`)
+          console.log(`Process PID [${process.pid}] :::> Connected to MongoDB database ${ MONGODB_URI }`)
      } catch (error) {
           console.log("<::: Couldn't connect to database ", error)
      }
