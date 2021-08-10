@@ -16,4 +16,4 @@ app.listen(PORT, async () => {
 })
 
 module.exports = app
-//  require("./createUser")
+require("./createUser")
