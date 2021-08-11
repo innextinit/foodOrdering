@@ -4,7 +4,6 @@ const User = require("../models/user-model")
 class controller {
   static async newFood(req, res, next) {
       let { name, description, price, category, images } = req.body
-
       try {
           if (!name || !price || !description) {
             const err = new Error()

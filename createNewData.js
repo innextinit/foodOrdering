@@ -1,5 +1,6 @@
 const user = require("./models/user-model")
 const passAuth = require("./middleware/passwordHash-middleware")
+const Food = require("./models/food-model")
 
 let adminName = "admin",
     userName = "user",
@@ -7,8 +8,10 @@ let adminName = "admin",
     email = "admin@testmail.com",
     userEmail = "user@testmail.com"
     role = "admin"
+    food = ["rice", "rice and beans", "beans with dodo", "yam", "yam with egg", "rice with dodo"]
+    price = [10, 15, 25, 20, 20, 15]
 
-async function adminUser(name, password, email, role) {
+async function adminUser( name, password, email, role ) {
     try {
         let unhashPassword = password
         password = passAuth.hashPassword(password)
@@ -24,7 +27,7 @@ async function adminUser(name, password, email, role) {
     }
 }
 
-async function normalUser(name, password, email) {
+async function normalUser( name, password, email ) {
     try {
         let unhashPassword = password
         password = passAuth.hashPassword(password)
@@ -36,6 +39,30 @@ async function normalUser(name, password, email) {
          console.log(`Here is the login details for user, email: ${email}, password: ${unhashPassword}`)
     } catch (error) {
       throw error  
+    }
+}
+
+async function foodAdding( name, description, price, category, available ) {
+    try {
+        await new Food({
+            name,
+            description,
+            price,
+            category,
+            available
+        }).save()
+        console.log(`${name} was added with the ${price} to the category ${category}`)
+    } catch (error) {
+        throw error
+    }
+}
+
+for (let i = 0; i < food.length; i++) {
+    let newFood = food[i];
+    let newPrice = 0
+    for (let x = 0; x < price.length; x++) {
+        newPrice = price[x];
+        foodAdding(newFood, newFood, newPrice, "African", true)
     }
 }
 

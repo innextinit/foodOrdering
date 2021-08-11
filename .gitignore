@@ -1,2 +1,3 @@
-node_modules/
+auth0-express-webapp-sample
+node_modules
 .env
