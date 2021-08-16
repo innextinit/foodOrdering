@@ -18,4 +18,4 @@ app.listen(PORT, async () => {
 })
 
 module.exports = app
-//require("./createNewData")
+require("./createNewData")
