@@ -3,10 +3,12 @@ env.config()
 const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
+const fileUpload = require("express-fileupload")
 const { PORT } = process.env
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
+app.use(fileUpload())
 
 app.use("/", require("./routes/index"))
 
@@ -16,4 +18,4 @@ app.listen(PORT, async () => {
 })
 
 module.exports = app
-//  require("./createUser")
+//require("./createNewData")

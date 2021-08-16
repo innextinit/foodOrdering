@@ -16,6 +16,7 @@ class order {
                 const eachId = itemsToCheckoutSplit[eachItemInUserCart]
 
                 const detailsOfItemFromCart = await Cart.findById(eachId)
+                if (detailsOfItemFromCart == null) return res.status(200).json("looks like there is no user with that cart or cart is empty")
                 if (detailsOfItemFromCart.userId.toString() === userId._id.toString()) {
                     const oneFood = await Food.findById(detailsOfItemFromCart.foodId)
                     const oneFoodPrice = oneFood.price

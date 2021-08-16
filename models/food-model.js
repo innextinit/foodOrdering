@@ -30,7 +30,7 @@ const foodSchema = new Schema(
         },
         
         images: {
-            type: [String],
+            type: Buffer
         }
     }
 )

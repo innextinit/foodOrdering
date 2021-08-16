@@ -28,7 +28,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "6066e876ef56251674cf166e",
+											"value": "611ace006d4d2c3c24ecd26e",
 											"description": "the id of the food to be added to the cart"
 										},
 										{
@@ -184,8 +184,8 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "6068d6a28c37e5149a93e6a7",
-											"description": "the cart item id of the food to be updated"
+											"value": "611ad2fbe02dbd4315aae432",
+											"description": "the cart item id of the food to be updated not the food id"
 										},
 										{
 											"key": "qty",
@@ -274,8 +274,8 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "6068cd6ed449311098ff7e81",
-											"description": "id of item to remove from cart"
+											"value": "611ad40ebcf67d44c9e92684",
+											"description": "id of cart holding the food and not the food id its self"
 										}
 									]
 								}
@@ -352,7 +352,8 @@
 									"urlencoded": [
 										{
 											"key": "items",
-											"value": "6069bf3aafa9402dd79853d3",
+											"value": "611ad5cbfbeb8c464526766d,611ad5e4fbeb8c464526766e",
+											"description": "id of the carts holding each food spliting each after a coman",
 											"type": "text"
 										}
 									]
@@ -567,13 +568,13 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "testName",
+									"value": "test name",
 									"description": "the users name",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "tH!3anE*ample",
+									"value": "tH!3anE*ample1",
 									"description": "the users password",
 									"type": "text"
 								},
@@ -681,13 +682,13 @@
 							"urlencoded": [
 								{
 									"key": "email",
-									"value": "test@mail.com",
+									"value": "admin@testmail.com",
 									"description": "the users unique email",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "tH!3anE*ampleTtr",
+									"value": "Password&123",
 									"description": "the password used during creating an account",
 									"type": "text"
 								}
@@ -1156,9 +1157,9 @@
 							]
 						},
 						"url": {
-							"raw": "{{users}}/resetpassword?userId=60659de09d9e41264838c4ad&resetToken=76f4672fd75d81413526091ccbf356491c2e5a4d5878d92171e83ebc8ec06695",
+							"raw": "{{baseURL}}/resetpassword?userId=60659de09d9e41264838c4ad&resetToken=e5990f24956ce9ae9ac3f903a011f16f44a21ac747f7945c5f44141c869e49cc",
 							"host": [
-								"{{users}}"
+								"{{baseURL}}"
 							],
 							"path": [
 								"resetpassword"
@@ -1170,7 +1171,7 @@
 								},
 								{
 									"key": "resetToken",
-									"value": "76f4672fd75d81413526091ccbf356491c2e5a4d5878d92171e83ebc8ec06695"
+									"value": "e5990f24956ce9ae9ac3f903a011f16f44a21ac747f7945c5f44141c869e49cc"
 								}
 							]
 						}
@@ -1440,7 +1441,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6066e876ef56251674cf166e"
+									"value": "611ace006d4d2c3c24ecd25d"
 								}
 							]
 						}
@@ -1594,40 +1595,44 @@
 				},
 				{
 					"name": "Add new food",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"contentType": "file",
+									"description": "the image of the food",
+									"type": "file",
+									"src": "/home/inioluwa/Pictures/Unsplash Images/20190606085515.jpg"
+								},
 								{
 									"key": "name",
-									"value": "garri",
+									"value": "rice and egg",
 									"description": "the name of the food",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "garri",
+									"value": "rice and egg",
 									"description": "the description of the food you about to add",
 									"type": "text"
 								},
 								{
 									"key": "price",
-									"value": "5",
+									"value": "15",
 									"description": "the price of the food",
 									"type": "text"
 								},
 								{
 									"key": "category",
-									"value": "African",
+									"value": "English",
 									"description": "the category the food should belong, incase of sorting",
-									"type": "text"
-								},
-								{
-									"key": "image",
-									"value": "image",
-									"description": "the image of the food",
 									"type": "text"
 								}
 							]
@@ -1814,7 +1819,7 @@
 							"urlencoded": [
 								{
 									"key": "foodName",
-									"value": "beans only",
+									"value": "rice",
 									"description": "the name of the food to make availabe or not",
 									"type": "text"
 								}
@@ -1908,7 +1913,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6065d41e803e1f395eea76c6"
+									"value": "611ace006d4d2c3c24ecd275"
 								}
 							]
 						},
@@ -1998,7 +2003,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJfaWQiOiI2MDY1OWRlMDlkOWU0MTI2NDgzOGM0YWQiLCJpYXQiOjE2MTc1NDI2NTQsImV4cCI6MTYxNzU0NjI1NH0.9KE7Xtzcesnqm5ftP-hwzcoXXOcLEdUBazmKwNMeBtQ",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHRlc3RtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsIl9pZCI6IjYwNzZkOGI5M2RkMWMxMmY1ZWUxZTI2YiIsImlhdCI6MTYyOTE0NjczNiwiZXhwIjoxNjI5MTUwMzM2fQ.PgTxQFInJQsMjF832Nhq5YVlDTBXglmth2xZVEyczeY",
 				"type": "string"
 			}
 		]

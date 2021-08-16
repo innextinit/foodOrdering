@@ -1,9 +1,11 @@
+const mongodb = require("mongodb")
+const binary = mongodb.Binary
 const Food = require("../models/food-model")
 const User = require("../models/user-model")
 
 class controller {
   static async newFood(req, res, next) {
-      let { name, description, price, category, images } = req.body
+      let { name, description, price, category } = req.body
       try {
           if (!name || !price || !description) {
             const err = new Error()
@@ -28,7 +30,8 @@ class controller {
               description,
               price,
               category,
-              images
+              images: binary(req.files.image.data)
+
           })
           await food.save()
   
