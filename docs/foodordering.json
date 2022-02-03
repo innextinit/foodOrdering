@@ -1,0 +1,960 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "FoodOrdering API",
+    "description": "FoodOrdering API",
+    "contact": {
+      "email": "innextinit@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0-oas3"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:2021"
+    },
+    {
+      "url": "https://init-foodordering.herokuapp.com"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Welcome",
+      "description": "Landing page details"
+    },
+    {
+      "name": "Authentication",
+      "description": "Authentication api endpoints"
+    },
+    {
+      "name": "User",
+      "description": "User CRUD endpoints"
+    },
+    {
+      "name": "Cart",
+      "description": "Cart related"
+    },
+    {
+      "name": "Order",
+      "description": "Ordering details"
+    },
+    {
+      "name": "Food",
+      "description": "Fooding"
+    },
+    {
+      "name": "Admin",
+      "description": "Fooding"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": ["Welcome"],
+        "summary": "Welcome details",
+        "description": "returns the active products",
+        "responses": {
+          "200": {
+            "description": "details of available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AllProduct"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/signup": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "signup with email",
+        "description": "create user account with email",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "ref",
+            "description": "username of referree",
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "account signup successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "signup with email",
+        "description": "create user account with email",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "user@testmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "Password&123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "account signup successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/updatepassword": {
+      "put": {
+        "tags": ["Authentication"],
+        "summary": "Change user account password",
+        "parameters": [{ "$ref": "#/components/parameters/access_token" }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "password",
+                  "newPassword"
+                ],
+                "properties": {
+                  "password": {
+                    "type": "string"
+                  },
+                  "newPassword": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Account password changed" },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/requestpasswordreset": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "Request password reset email",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "user@testmail.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Password reset email sent" },
+          "400": { "$ref": "#/components/responses/400" },
+          "500": { "$ref": "#/components/responses/500" }
+        }
+      }
+    },
+    "/resetpassword": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "Reset account password",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "type": "string",
+            "description": "userID for account to reset password",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "resetToken",
+            "type": "string",
+            "description": "token from verification link",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Account password changed" },
+          "400": { "$ref": "#/components/responses/400" },
+          "500": { "$ref": "#/components/responses/500" }
+        }
+      }
+    },
+    "/edit": {
+      "put": {
+        "tags": ["User"],
+        "summary": "update user data",
+        "parameters": [{ "$ref": "#/components/parameters/access_token" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "user user updated",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/User" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/400" },
+          "403": { "$ref": "#/components/responses/403" },
+          "500": { "$ref": "#/components/responses/500" }
+        }
+      }
+    },
+    "/{user_id}": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Get a users detail",
+        "parameters": [
+          { "$ref": "#/components/parameters/access_token" },
+          { "$ref": "#/components/parameters/user_id"}
+        ],
+        "responses": {
+          "200": {
+            "description": "Users retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "integer"
+                    },
+                    "cart": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Cart"
+                      }
+                    },
+                    "order": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Order"
+                      }
+                    },
+                    "role": {
+                      "type": "string",
+                      "example": "user"
+                    },
+                    "_id": {
+                      "type": "string",
+                      "example": "61fb9f499e4bba1b63add14e"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["User"],
+        "summary": "update user data",
+        "parameters": [
+          { "$ref": "#/components/parameters/access_token" },
+          { "$ref": "#/components/parameters/user_id"}
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "user user updated",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/User" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/400" },
+          "403": { "$ref": "#/components/responses/403" },
+          "500": { "$ref": "#/components/responses/500" }
+        }
+      }
+    },
+    "/food/all": {
+      "get": {
+        "tags": ["Food"],
+        "summary": "return all food available",
+        "responses": {
+          "200": {
+            "description": "available foods",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AllProduct" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/400" },
+          "403": { "$ref": "#/components/responses/403" },
+          "500": { "$ref": "#/components/responses/500" }
+        }
+      }
+    },
+    "/food/{food_id}": {
+      "get": {
+        "tags": ["Food"],
+        "summary": "return one food details",
+        "responses": {
+          "200": {
+            "description": "user user updated",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AllProduct" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/400" },
+          "403": { "$ref": "#/components/responses/403" },
+          "500": { "$ref": "#/components/responses/500" }
+        }
+      }
+    },
+    "/user/cart": {
+      "get": {
+        "tags": ["Cart"],
+        "summary": "return users cart items",
+        "parameters": [{ "$ref": "#/components/parameters/access_token" }],
+        "responses": {
+          "200": {
+            "description": "users cart item",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Cart" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/400" },
+          "403": { "$ref": "#/components/responses/403" },
+          "500": { "$ref": "#/components/responses/500" }
+        }
+      }
+    },
+    "/user/cart/{food_id}/{food_qty}": {
+      "post": {
+        "tags": ["Cart"],
+        "summary": "Add item to users cart",
+        "parameters": [
+          { "$ref": "#/components/parameters/access_token" },
+          { "$ref": "#/components/parameters/food_id"},
+          { "$ref": "#/components/parameters/food_qty"}
+        ],
+        "description": "add new food to cart",
+        "responses": {
+          "201": {
+            "description": "account signup successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cart"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Cart"],
+        "summary": "Add item to users cart",
+        "parameters": [{ "$ref": "#/components/parameters/access_token" }],
+        "description": "add new food to cart",
+        "responses": {
+          "201": {
+            "description": "account signup successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cart"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/user/cart/{food_id}/": {
+      "delete": {
+        "tags": ["Cart"],
+        "summary": "Add item to users cart",
+        "parameters": [
+          { "$ref": "#/components/parameters/access_token" },
+          { "$ref": "#/components/parameters/food_id" }
+        ],
+        "description": "add new food to cart",
+        "responses": {
+          "201": {
+            "description": "account signup successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cart"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/user/ordering": {
+      "get": {
+        "tags": ["Order"],
+        "summary": "get all ordering history",
+        "parameters": [{ "$ref": "#/components/parameters/access_token" }],
+        "responses": {
+          "200": {
+            "description": "all ording",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Order" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/400" },
+          "403": { "$ref": "#/components/responses/403" },
+          "500": { "$ref": "#/components/responses/500" }
+        }
+      },
+      "post": {
+        "tags": ["Order"],
+        "summary": "checkout food",
+        "parameters": [{ "$ref": "#/components/parameters/access_token" }],
+        "responses": {
+          "200": {
+            "description": "users cart item",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Order" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/400" },
+          "403": { "$ref": "#/components/responses/403" },
+          "500": { "$ref": "#/components/responses/500" }
+        }
+      }
+    },
+    "/admin": {
+      "post": {
+        "tags": ["Admin"],
+        "summary": "add new food",
+        "parameters": [ { "$ref": "#/components/parameters/access_token" }],
+        "description": "create user account with email",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Food"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "account signup successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/allfoods": {
+      "get": {
+        "tags": ["Admin"],
+        "summary": "get all food",
+        "parameters": [ { "$ref": "#/components/parameters/access_token" }],
+        "description": "get all foods added by admin",
+        "responses": {
+          "201": {
+            "description": "all foods",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AllProduct"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/makeavailable": {
+      "post": {
+        "tags": ["Admin"],
+        "summary": "signup with email",
+        "parameters": [ { "$ref": "#/components/parameters/access_token" }],
+        "description": "create user account with email",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "userToBeAdmin": {
+                    "type": "string",
+                    "example": "user@testmail.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "account signup successful"
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/makeadmin": {
+      "post": {
+        "tags": ["Admin"],
+        "summary": "Make user an admin",
+        "parameters": [ { "$ref": "#/components/parameters/access_token" }],
+        "description": "make email drop an admin",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "userToBeAdmin": {
+                    "type": "string",
+                    "example": "user@testmail.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "account signup successful"
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/{food_id}": {
+      "delete": {
+        "tags": ["Admin"],
+        "summary": "Delete a food",
+        "parameters": [
+          { "$ref": "#/components/parameters/access_token" },
+          { "$ref": "#/components/parameters/food_id" }
+        ],
+        "description": "delete food in store",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "userToBeAdmin": {
+                    "type": "string",
+                    "example": "user@testmail.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "account signup successful"
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AllProduct": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "allFoodsAvailable": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "available": {
+                  "type": "boolean"
+                },
+                "_id": {
+                  "type": "string",
+                  "example": "61fbb2d39e542c656aa1314b"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "rice and egg"
+                },
+                "description": {
+                  "type": "string",
+                  "example":"rice and egg"
+                },
+                "price": {
+                  "type": "integer"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "images": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Food": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "rice and egg"
+          },
+          "description": {
+            "type": "string",
+            "example":"rice and egg"
+          },
+          "price": {
+            "type": "integer"
+          },
+          "category": {
+            "type": "string"
+          },
+          "images": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "data": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      
+      },
+      "UserUpdate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          }
+        }
+      },
+      "User": {
+        "required": [
+          "email",
+          "name",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "user@testmail.com"
+          },
+          "name": {
+            "type": "string",
+            "example": "johndoe"
+          },
+          "password": {
+            "type": "string",
+            "example": "Password&123"
+          }
+        }
+      },
+      "UserResponse" : {
+        "type": "object",
+        "properties": {
+          "user": {
+            "email": {
+              "type": "string",
+              "format": "email"
+            },
+            "role": {
+              "type": "string",
+              "example": "user"
+            },
+            "token": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Cart": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "foodId": {
+            "type": "string"
+          },
+          "qty": {
+            "type": "integer"
+          },
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "itemSummary": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "foodName": {
+                  "type": "string",
+                  "example": "rice and beans"
+                },
+                "foodId": {
+                  "type": "string",
+                  "example": "61fc46caf8c753b27237623c"
+                },
+                "foodQyt": {
+                  "type": "integer"
+                },
+                "eachFoodPrice": {
+                  "type": "integer"
+                },
+                "oneFoodPriceWithQyt": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "totalPrice": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "parameters": {
+      "user_id": {
+        "in": "path",
+        "name": "id",
+        "type": "string"
+      },
+      "food_id": {
+        "in": "path",
+        "name": "id",
+        "type": "string"
+      },
+      "food_qty": {
+        "in": "path",
+        "name": "qty",
+        "type": "integer"
+      },
+      "access_token": {
+        "in": "header",
+        "name": "token",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "responses": {
+      "400": {
+        "description": "Bad request"
+      },
+      "403": {
+        "description": "Forbidden"
+      },
+      "404": {
+        "description": "Not found"
+      },
+      "401": {
+        "description": "Unauthorized"
+      },
+      "500": {
+        "description": "Internal  server error"
+      }
+    }
+  }
+}

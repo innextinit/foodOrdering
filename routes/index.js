@@ -2,7 +2,12 @@ const express = require('express')
 const router = express.Router()
 const controller = require("../controller/index")
 const  auth = require("../middleware/auth-middleware")
-    
+
+router.use(
+    "/docs",
+    require("./doc")
+)
+
 router.use(
     "/admin",
     require("./admin-route")
@@ -38,13 +43,13 @@ router.post(
     controller.login
 )
     
-router.post(
+router.put(
     "/edit",
     auth.decodeToken,
     controller.userUpdate
 )
     
-router.post(
+router.put(
     "/updatepassword",
     auth.decodeToken,
     controller.updatePassword
@@ -52,13 +57,11 @@ router.post(
     
 router.post(
     "/requestpasswordreset",
-    auth.decodeToken,
     controller.requestPasswordReset
 )
     
 router.post(
     "/resetpassword",
-    auth.decodeToken,
     controller.resetPassword
 )
 router.get(

@@ -29,11 +29,11 @@ Method | Route | Controller | Auth
 get | / | allFoods | -
 post | /signup | newUser | -
 post | /login | login | -
-post | /edit | userUpdate | decodeToken
-post | /updatepassword | updatePassword | decodeToken
-post | /requestpasswordreset | requestPasswordReset | decodeToken
-post | /resetpassword | resetPassword | decodeToken
+put | /updatepassword | updatePassword | decodeToken
+post | /requestpasswordreset | requestPasswordReset | -
+post | /resetpassword | resetPassword | -
 get | /:id | userProfile | decodetoken
+put | /edit | userUpdate | decodeToken
 delete | /:id | delUser | decodeToken
 get | /food/all | allFoods | decodeToken
 get | /food/:id | aFoodDetails | decodeToken

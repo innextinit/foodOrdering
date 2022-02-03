@@ -5,7 +5,10 @@ const { TOKEN_KEY } = require("../config/index")
 class authorisation {
     static getToken(req)  {
         let { headers: { authorization }} = req
-        if (typeof authorization === "undefined") {
+        let token = req.headers["token"]
+        if (token) {
+            return token
+        } else if (typeof authorization === "undefined") {
             authorization = ""
             return "authorization needed"
         }

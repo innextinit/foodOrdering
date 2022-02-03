@@ -1,4 +1,4 @@
-const user = require("./models/user-model")
+const User = require("./models/user-model")
 const passAuth = require("./middleware/passwordHash-middleware")
 const Food = require("./models/food-model")
 
@@ -21,7 +21,7 @@ async function adminUser( name, password, email, role ) {
     try {
         let unhashPassword = password
         password = passAuth.hashPassword(password)
-        await new user({
+        await new User({
             name,
             password,
             email,
@@ -37,7 +37,7 @@ async function normalUser( name, password, email ) {
     try {
         let unhashPassword = password
         password = passAuth.hashPassword(password)
-        await new user({
+        await new User({
             name,
             password,
             email
